@@ -2,7 +2,7 @@ import { render, screen } from "../../../test/library";
 import { ChatMessage } from "./chat-message";
 
 describe("Chat Message", () => {
-  it.only("should render a chat message with character, message and name", () => {
+  it("should render a chat message with character, message and name", () => {
     render(<ChatMessage character={1} name="Rod" message="Hello" />);
 
     const chatMessage = screen.getByRole("@dino-chatmessage");

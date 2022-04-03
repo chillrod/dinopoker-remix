@@ -22,9 +22,9 @@ describe("Select", () => {
     expect(screen.getByRole("@dino-select")).toBeInTheDocument();
   });
 
-  it("should trigger onchange func", async () => {
+  it.only("should trigger onchange func", async () => {
     const handleSelectValue = (e: any) => {
-      return e;
+      return e.target.value;
     };
 
     const func = fn(handleSelectValue);
@@ -38,6 +38,8 @@ describe("Select", () => {
     userEvent.selectOptions(select, [option]);
 
     expect(func).toBeCalledTimes(1);
+
+    expect(func).toHaveReturned();
   });
 
   it("should disable selection if disabled", () => {
