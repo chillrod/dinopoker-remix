@@ -14,6 +14,8 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import "./config/locale/";
+
 interface DocumentProps {
   children: React.ReactNode;
 }
