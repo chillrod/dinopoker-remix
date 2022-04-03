@@ -8,15 +8,7 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-
-interface IPlayerData {
-  id?: string;
-  name?: string;
-  character: number;
-  vote?: number | null;
-  room?: string;
-  voteStatus?: string;
-}
+import { IPlayerData } from "~/models/player";
 
 import { characters } from "../../../models/characters";
 
@@ -24,7 +16,14 @@ type IVoteStatus = {
   [voteStatus: string]: string;
   SECRET: string;
   THINKING: string;
-  REVELEAD: string;
+  REVEAL: string;
+};
+
+type IVoteShow = {
+  [voteStatus: string]: string | number;
+  SECRET: string;
+  THINKING: string;
+  REVEAL: number;
 };
 
 export const CharacterVote = ({
@@ -34,7 +33,7 @@ export const CharacterVote = ({
   voteStatus,
 }: IPlayerData) => {
   const parseToolTip = (voteStatus?: string, vote?: number | null) => {
-    if (voteStatus === "REVELEAD") return `${vote}`;
+    if (voteStatus === "REVEAL") return `${vote}`;
 
     if (voteStatus === "THINKING") return "Not voted yet";
 
@@ -45,7 +44,17 @@ export const CharacterVote = ({
     const state: IVoteStatus = {
       SECRET: "dino.primary",
       THINKING: "dino.base2",
-      REVELEAD: "dino.base2",
+      REVEAL: "dino.base2",
+    };
+
+    return state[voteStatus];
+  };
+
+  const parseVoteText = (voteStatus: string, vote: number) => {
+    const state: IVoteShow = {
+      SECRET: "?",
+      THINKING: "-",
+      REVEAL: vote,
     };
 
     return state[voteStatus];
@@ -57,7 +66,6 @@ export const CharacterVote = ({
       size="xs"
       title={parseVoteStatusBackground(voteStatus ? voteStatus : "THINKING")}
       bg={parseVoteStatusBackground(voteStatus ? voteStatus : "THINKING")}
-      // outline={raiseHand ? "2px  goldenrod solid" : ""}
       width="100%"
       height="100%"
     >
@@ -101,9 +109,11 @@ export const CharacterVote = ({
                 title={parseToolTip(voteStatus, vote)}
                 fontSize="lg"
               >
-                {voteStatus === "THINKING" && "-"}
-                {voteStatus === "SECRET" && "?"}
-                {voteStatus === "REVEALED" && `${vote ? vote : "-"} `}
+                {voteStatus && vote ? (
+                  <>{parseVoteText(voteStatus, vote)}</>
+                ) : (
+                  <>...</>
+                )}
               </Text>
             </Tooltip>
           </Badge>

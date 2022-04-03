@@ -1,10 +1,13 @@
 // root.tsx
 import React, { useContext, useEffect } from "react";
+
 import { withEmotionCache } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
+
 import ThemeConfig from "./config/theme/theme-config";
 
 import { ServerStyleContext, ClientStyleContext } from "./config/theme/context";
+
 import {
   Links,
   LiveReload,
@@ -52,6 +55,8 @@ const Document = withEmotionCache(
     return (
       <html lang="en">
         <head>
+          <Links />
+
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width,initial-scale=1" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,7 +66,6 @@ const Document = withEmotionCache(
             rel="stylesheet"
           />
           <Meta />
-          <Links />
           {serverStyleData?.map(({ key, ids, css }) => (
             <style
               key={key}

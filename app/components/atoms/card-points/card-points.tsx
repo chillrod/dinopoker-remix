@@ -2,7 +2,7 @@ import { Box, Button, Grid, GridItem, Text } from "@chakra-ui/react";
 
 interface ICardPoints {
   point: number;
-  selected: boolean;
+  selected?: boolean;
   onClick?: (point: number) => void;
 }
 export const CardPoints = ({ selected, point, onClick }: ICardPoints) => {
@@ -36,6 +36,7 @@ export const CardPoints = ({ selected, point, onClick }: ICardPoints) => {
             borderRadius="full"
           >
             <Text
+              as="h2"
               fontSize="3xl"
               color="dino.secondary"
               fontWeight={600}

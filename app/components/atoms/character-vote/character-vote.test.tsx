@@ -59,7 +59,7 @@ describe.only("Character Vote", () => {
           id={character.id}
           name="Rod"
           vote={character.vote}
-          voteStatus="REVELEAD"
+          voteStatus="REVEAL"
         />
       </>
     );

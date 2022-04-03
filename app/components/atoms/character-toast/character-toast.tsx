@@ -11,8 +11,6 @@ import theme from "../../../config/theme/theme-config";
 
 const toast = createStandaloneToast({ theme: theme });
 
-//TODO - Make button of closable toast
-
 export const emitCharacterToast = ({
   message,
   characterSrc,

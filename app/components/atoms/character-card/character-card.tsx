@@ -6,8 +6,8 @@ interface ICharacterCardProps {
   character?: character;
   disabled?: boolean;
   isSelected?: number;
-  onClick?: React.MouseEventHandler;
   isSelectedScreen?: boolean;
+  onClick?: React.MouseEventHandler;
 }
 
 export const CharacterCard = ({

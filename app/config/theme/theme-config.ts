@@ -19,6 +19,13 @@ const ChakraTheme = extendTheme({
   colors: {
     dino,
   },
+  styles: {
+    global: () => ({
+      body: {
+        bg: "dino.base3",
+      },
+    }),
+  },
 });
 
 export default ChakraTheme;
